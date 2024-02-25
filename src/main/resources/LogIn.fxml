@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.LogIn">
+   <children>
+      <Region layoutX="102.0" layoutY="163.0" prefHeight="374.0" prefWidth="626.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
+      <ImageView fx:id="LogoId" fitHeight="91.0" fitWidth="121.0" layoutX="369.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/logo.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="emailTextId" fill="#fdf8db" layoutX="172.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="emailFieldId" layoutX="172.0" layoutY="279.0" prefHeight="26.0" prefWidth="486.0" promptText="Enter e-mail address." style="-fx-background-color: #fdf8db;" />
+      <Text fx:id="passwordTextId" fill="#fdf8db" layoutX="172.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="LogInButton" layoutX="365.0" layoutY="412.0" mnemonicParsing="false" onAction="#logIn" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: E18B10; -fx-background-radius: 55;" text="Log In" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="PasswordFieldId" layoutX="172.0" layoutY="359.0" prefHeight="26.0" prefWidth="486.0" promptText="Enter password." style="-fx-background-color: #fdf8db;" />
+      <Text fx:id="LogInTextId" fill="#fdf8db" layoutX="248.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in to your account!">
+         <font>
+            <Font name="Gill Sans MT" size="35.0" />
+         </font>
+      </Text>
+      <Hyperlink fx:id="resetPwdLink" layoutX="333.0" layoutY="449.0" onAction="#RedirectToReset" text="Forgot your password ?" textFill="#fdf8db">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="246.800048828125" layoutX="414.0" layoutY="486.0" startX="-239.60000610351562" />
+      <Text fx:id="logInRedirId" fill="#fdf8db" layoutX="308.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ? Sign Up">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Text>
+      <Hyperlink fx:id="signUpLink" layoutX="463.0" layoutY="492.0" onAction="#redirectSignUp" text="Sign Up" textFill="#fdf8db">
+         <font>
+            <Font name="Gill Sans MT" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Text fx:id="emailAlertId" fill="#ff4d4d" layoutX="172.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                  " />
+      <Text fx:id="passwordAlertId" fill="#ff4d4d" layoutX="172.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                  " />
+   </children>
+</AnchorPane>

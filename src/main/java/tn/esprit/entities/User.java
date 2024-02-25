@@ -1,37 +1,96 @@
 package tn.esprit.entities;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class User {
 
     private int uid;
     private String fname, lname, email;
-    private boolean gender;
+    private boolean gender, status;
     private int phone_nb;
     private Date birth_date;
-    private String profile_pic, password, verification_code;
+    private String profile_pic, password, verification_code, role;
 
-    public User(String fname, String lname, String email, boolean gender, int phone_nb, Date birth_date, String password) {
+    public User(String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String profile_pic, String password, String verification_code, String role) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.gender = gender;
+        this.status = status;
+        this.phone_nb = phone_nb;
+        this.birth_date = birth_date;
+        this.profile_pic = profile_pic;
+        this.password = password;
+        this.verification_code = verification_code;
+        this.role = role;
+    }
+
+    public User(int uid, String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String profile_pic, String password, String verification_code, String role) {
+        this.uid = uid;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.gender = gender;
+        this.status = status;
+        this.phone_nb = phone_nb;
+        this.birth_date = birth_date;
+        this.profile_pic = profile_pic;
+        this.password = password;
+        this.verification_code = verification_code;
+        this.role = role;
+    }
+
+    public User(String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String password, String role) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.gender = gender;
+        this.status = status;
         this.phone_nb = phone_nb;
         this.birth_date = birth_date;
         this.password = password;
+        this.role = role;
     }
 
-    public User(int uid, String fname, String lname, String email, boolean gender, int phone_nb, String profile_pic, Date birth_date, String password, String verification_code) {
+    public User(String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String profile_pic, String password, String role) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.gender = gender;
+        this.status = status;
+        this.phone_nb = phone_nb;
+        this.birth_date = birth_date;
+        this.profile_pic = profile_pic;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(int uid, String fname, String lname, String email, boolean gender, int phone_nb, Date birth_date, String password, String role) {
         this.uid = uid;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.gender = gender;
         this.phone_nb = phone_nb;
-        this.profile_pic = profile_pic;
         this.birth_date = birth_date;
         this.password = password;
-        this.verification_code = verification_code;
+        this.role = role;
+    }
+
+    public User(String fname, String lname, String email, boolean gender, int phone_nb, Date birth_date, String password, String role) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.gender = gender;
+        this.phone_nb = phone_nb;
+        this.birth_date = birth_date;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User() {
+
     }
 
     public int getUid() {
@@ -114,6 +173,22 @@ public class User {
         this.profile_pic = profile_pic;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -122,11 +197,18 @@ public class User {
                 ", lname='" + lname + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
+                ", status=" + status +
                 ", phone_nb=" + phone_nb +
                 ", birth_date=" + birth_date +
                 ", profile_pic='" + profile_pic + '\'' +
                 ", password='" + password + '\'' +
                 ", verification_code='" + verification_code + '\'' +
-                '}';
+                ", role='" + role + '\'' +
+                '}' + "\n";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fname, lname, email, gender, status, phone_nb, birth_date, password, role);
     }
 }
