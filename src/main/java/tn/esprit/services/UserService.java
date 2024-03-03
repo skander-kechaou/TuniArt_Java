@@ -106,7 +106,7 @@ public class UserService implements IService<User> {
 
         else if (user instanceof Artist) {
             Artist artist = (Artist) user;
-            String query = "UPDATE user SET fname=?, lname=?, email=?, gender=?, phone_nb=?, birth_date=?, password=?, verification_code=?, profile_pic=?, role=?, status=?, biography=?, portfolio=? WHERE uid=?";
+            String query = "UPDATE user SET fname=?, lname=?, email=?, gender=?, phone_nb=?, birth_date=?, password=?, verification_code=?, profile_pic=?, role=?, status=?, biography=?, portfolio=?, profileViews=? WHERE uid=?";
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setString(1, artist.getFname());
@@ -122,13 +122,14 @@ public class UserService implements IService<User> {
             ps.setBoolean(11, artist.getStatus());
             ps.setString(12, artist.getBiography());
             ps.setString(13, artist.getPortfolio());
-            ps.setInt(14, user.getUid());
+            ps.setInt(14, artist.getProfileViews());
+            ps.setInt(15, user.getUid());
 
             ps.executeUpdate();
             System.out.println("Artist updated!");
         }
         else if (user instanceof User) {
-            String query = "UPDATE user SET fname=?, lname=?, email=?, gender=?, phone_nb=?, birth_date=?, password=?, verification_code=?, profile_pic=?, role=?, status=? WHERE uid=?";
+            String query = "UPDATE user SET fname=?, lname=?, email=?, gender=?, phone_nb=?, birth_date=?, password=?, verification_code=?, profile_pic=?, role=?, status=?, profileViews=? WHERE uid=?";
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setString(1, user.getFname());
@@ -142,7 +143,8 @@ public class UserService implements IService<User> {
             ps.setString(9, user.getProfile_pic());
             ps.setString(10, user.getRole());
             ps.setBoolean(11, user.getStatus());
-            ps.setInt(12, user.getUid());
+            ps.setInt(12, user.getProfileViews());
+            ps.setInt(13, user.getUid());
 
             ps.executeUpdate();
             System.out.println("User updated!");
@@ -185,16 +187,17 @@ public class UserService implements IService<User> {
             String portfolio = res.getString(12);
             String role = res.getString(13);
             boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
 
             User ur = null;
             if (role.equals("User")) {
-                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role);
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
             }
             else if (role.equals("Admin")) {
                 ur = new Admin(uid, fname, lname, email, gender, phone_nb, birth_date, password, role);
             }
             else if (role.equals("Artist")) {
-                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio);
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
             }
 
             users.add(ur);
@@ -222,19 +225,21 @@ public class UserService implements IService<User> {
             String portfolio = res.getString(12);
             String role = res.getString(13);
             boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
 
             User ur = null;
             if (role.equals("User")) {
-                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role);
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
             }
             else if (role.equals("Artist")) {
-                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio);
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
             }
 
             users.add(ur);
         }
         return users;
     }
+
 
 
     public boolean isEmailUnique(String email) throws SQLException {
@@ -317,13 +322,47 @@ public class UserService implements IService<User> {
                     String portfolio = res.getString(12);
                     String role = res.getString(13);
                     boolean status = res.getBoolean(14);
+                    int profileViews = res.getInt(15);
 
                     ur = null;
                     if (role.equals("User")) {
-                        ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role);
+                        ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
                     } else if (role.equals("Admin")) {
                         ur = new Admin(uid, fname, lname, email, gender, phone_nb, birth_date, password, role);
                     } else if (role.equals("Artist")) {
+                        ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+
+                    }
+                }
+            }
+        }
+        return ur;
+    }
+
+    public Artist searchArtistByUid(int uid) throws SQLException {
+        String query = "SELECT * FROM user WHERE uid = ?";
+        Artist ur = null;
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            statement.setInt(1, uid);
+            try (ResultSet res = statement.executeQuery()) {
+                if (res.next()) {
+                    String fname = res.getString(2);
+                    String lname = res.getString(3);
+                    String email = res.getString(4);
+                    boolean gender = res.getBoolean(5);
+                    int phone_nb = res.getInt(6);
+                    String profile_pic = res.getString(7);
+                    Date birth_date = res.getDate(8);
+                    String password = res.getString(9);
+                    String verification_code = res.getString(10);
+                    String biography = res.getString(11);
+                    String portfolio = res.getString(12);
+                    String role = res.getString(13);
+                    boolean status = res.getBoolean(14);
+
+                    ur = null;
+
+                    if (role.equals("Artist")) {
                         ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio);
 
                     }
@@ -333,6 +372,266 @@ public class UserService implements IService<User> {
         return ur;
     }
 
+    public void addFollower(int follower_id, int following_id) throws SQLException {
+        String query = "INSERT INTO `followers`(`follower_id`, `following_id`) VALUES (?,?)";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, follower_id);
+        ps.setInt(2, following_id);
+
+        ps.executeUpdate();
+        System.out.println("Follower added!");
+    }
+
+    public void deleteFollower(int follower_id, int following_id) throws SQLException {
+        String query = "DELETE FROM `followers` WHERE `follower_id`=? AND `following_id`=?";
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, follower_id);
+        ps.setInt(2, following_id);
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Follower deleted");
+        } else {
+            System.out.println("Follower with ID " + follower_id + " not found");
+        }
+    }
+
+    public int countFollowers(int user_id) throws SQLException {
+        String query = "SELECT COUNT(*) FROM followers WHERE following_id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, user_id);
+
+        ResultSet rs = ps.executeQuery();
+        rs.next(); // Move the cursor to the first row
+        int count = rs.getInt(1); // Get the count from the first column of the result set
+
+        // Close resources
+        rs.close();
+        ps.close();
+
+        return count;
+    }
+
+    public int countFollowing(int user_id) throws SQLException {
+        String query = "SELECT COUNT(*) FROM followers WHERE follower_id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, user_id);
+
+        ResultSet rs = ps.executeQuery();
+        rs.next(); // Move the cursor to the first row
+        int count = rs.getInt(1); // Get the count from the first column of the result set
+
+        // Close resources
+        rs.close();
+        ps.close();
+
+        return count;
+    }
 
 
+    public boolean isFollowing(int follower_id, int following_id) throws SQLException {
+        String query = "SELECT COUNT(*) FROM followers WHERE follower_id = ? AND following_id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, follower_id);
+        ps.setInt(2, following_id);
+
+        ResultSet rs = ps.executeQuery();
+        rs.next(); // Move the cursor to the first row
+        int count = rs.getInt(1); // Get the count from the first column of the result set
+
+        // Close resources
+        rs.close();
+        ps.close();
+
+        return count > 0;
+    }
+
+    public List<User> searchByName(String input) throws SQLException {
+        String query = "SELECT * FROM user WHERE fname LIKE CONCAT('%', ?, '%') OR lname LIKE CONCAT('%', ?, '%')";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setString(1, input);
+        statement.setString(2, input);
+
+        ResultSet res = statement.executeQuery();
+
+        List<User> users = new ArrayList<>();
+        while (res.next()) {
+            int uid = res.getInt(1);
+            String fname = res.getString(2);
+            String lname = res.getString(3);
+            String email = res.getString(4);
+            boolean gender = res.getBoolean(5);
+            int phone_nb = res.getInt(6);
+            String profile_pic = res.getString(7);
+            Date birth_date = res.getDate(8);
+            String password = res.getString(9);
+            String verification_code = res.getString(10);
+            String biography = res.getString(11);
+            String portfolio = res.getString(12);
+            String role = res.getString(13);
+            boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
+
+            User ur = null;
+            if (role.equals("User")) {
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+            } else if (role.equals("Artist")) {
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+            }
+
+            users.add(ur);
+        }
+        return users;
+    }
+
+
+    public List<User> SortByFirstName() throws SQLException {
+        String query = "SELECT * FROM user WHERE role != 'Admin' ORDER BY fname";
+        PreparedStatement statement = con.prepareStatement(query);
+
+        ResultSet res = statement.executeQuery();
+
+        List<User> users = new ArrayList<>();
+        while (res.next()) {
+            int uid = res.getInt(1);
+            String fname = res.getString(2);
+            String lname = res.getString(3);
+            String email = res.getString(4);
+            boolean gender = res.getBoolean(5);
+            int phone_nb = res.getInt(6);
+            String profile_pic = res.getString(7);
+            Date birth_date = res.getDate(8);
+            String password = res.getString(9);
+            String verification_code = res.getString(10);
+            String biography = res.getString(11);
+            String portfolio = res.getString(12);
+            String role = res.getString(13);
+            boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
+
+            User ur = null;
+            if (role.equals("User")) {
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+            } else if (role.equals("Artist")) {
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+            }
+
+            users.add(ur);
+        }
+        return users;
+    }
+
+    public List<User> SortByLastName() throws SQLException {
+        String query = "SELECT * FROM user WHERE role != 'Admin' ORDER BY lname";
+        PreparedStatement statement = con.prepareStatement(query);
+
+        ResultSet res = statement.executeQuery();
+
+        List<User> users = new ArrayList<>();
+        while (res.next()) {
+            int uid = res.getInt(1);
+            String fname = res.getString(2);
+            String lname = res.getString(3);
+            String email = res.getString(4);
+            boolean gender = res.getBoolean(5);
+            int phone_nb = res.getInt(6);
+            String profile_pic = res.getString(7);
+            Date birth_date = res.getDate(8);
+            String password = res.getString(9);
+            String verification_code = res.getString(10);
+            String biography = res.getString(11);
+            String portfolio = res.getString(12);
+            String role = res.getString(13);
+            boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
+
+            User ur = null;
+            if (role.equals("User")) {
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+            } else if (role.equals("Artist")) {
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+            }
+
+            users.add(ur);
+        }
+        return users;
+    }
+
+    public List<User> SortByFollowers() throws SQLException {
+        String query = "SELECT u.*, COUNT(f.following_id) AS followerCount " +
+                "FROM user u " +
+                "LEFT JOIN followers f ON u.uid = f.following_id " +
+                "WHERE role != 'Admin'"+
+                "GROUP BY u.uid " +
+                "ORDER BY followerCount DESC";
+        PreparedStatement statement = con.prepareStatement(query);
+
+        ResultSet res = statement.executeQuery();
+
+        List<User> users = new ArrayList<>();
+        while (res.next()) {
+            int uid = res.getInt(1);
+            String fname = res.getString(2);
+            String lname = res.getString(3);
+            String email = res.getString(4);
+            boolean gender = res.getBoolean(5);
+            int phone_nb = res.getInt(6);
+            String profile_pic = res.getString(7);
+            Date birth_date = res.getDate(8);
+            String password = res.getString(9);
+            String verification_code = res.getString(10);
+            String biography = res.getString(11);
+            String portfolio = res.getString(12);
+            String role = res.getString(13);
+            boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
+
+            User ur = null;
+            if (role.equals("User")) {
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+            } else if (role.equals("Artist")) {
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+            }
+
+            users.add(ur);
+        }
+        return users;
+    }
+
+    public List<User> SortByRole(String input) throws SQLException {
+        String query = "SELECT * FROM user WHERE role = ?";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setString(1, input);
+
+        ResultSet res = statement.executeQuery();
+
+        List<User> users = new ArrayList<>();
+        while (res.next()) {
+            int uid = res.getInt(1);
+            String fname = res.getString(2);
+            String lname = res.getString(3);
+            String email = res.getString(4);
+            boolean gender = res.getBoolean(5);
+            int phone_nb = res.getInt(6);
+            String profile_pic = res.getString(7);
+            Date birth_date = res.getDate(8);
+            String password = res.getString(9);
+            String verification_code = res.getString(10);
+            String biography = res.getString(11);
+            String portfolio = res.getString(12);
+            String role = res.getString(13);
+            boolean status= res.getBoolean(14);
+            int profileViews = res.getInt(15);
+
+            User ur = null;
+            if (role.equals("User")) {
+                ur = new User(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+            } else if (role.equals("Artist")) {
+                ur = new Artist(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, biography, portfolio, profileViews);
+            }
+
+            users.add(ur);
+        }
+        return users;
+    }
 }

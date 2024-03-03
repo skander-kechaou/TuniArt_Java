@@ -28,6 +28,12 @@ public class Artist extends User{
         super();
     }
 
+    public Artist(int uid, String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String profile_pic, String password, String verification_code, String role, String biography, String portfolio, int profileViews) {
+        super(uid, fname, lname, email, gender, status, phone_nb, birth_date, profile_pic, password, verification_code, role, profileViews);
+        this.biography = biography;
+        this.portfolio = portfolio;
+    }
+
     public String getBiography() {
         return biography;
     }

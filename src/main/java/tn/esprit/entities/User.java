@@ -8,7 +8,32 @@ public class User {
     private int uid;
     private String fname, lname, email;
     private boolean gender, status;
-    private int phone_nb;
+    private int phone_nb, profileViews;
+
+    public User(int uid, String fname, String lname, String email, boolean gender, boolean status, int phone_nb, Date birth_date, String profile_pic, String password, String verification_code, String role, int profileViews) {
+        this.uid = uid;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.gender = gender;
+        this.status = status;
+        this.phone_nb = phone_nb;
+        this.birth_date = birth_date;
+        this.profile_pic = profile_pic;
+        this.password = password;
+        this.verification_code = verification_code;
+        this.role = role;
+        this.profileViews= profileViews;
+    }
+
+    public int getProfileViews() {
+        return profileViews;
+    }
+
+    public void setProfileViews(int profileViews) {
+        this.profileViews = profileViews;
+    }
+
     private Date birth_date;
     private String profile_pic, password, verification_code, role;
 

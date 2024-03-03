@@ -171,8 +171,9 @@ public class EditUser implements Initializable {
                 System.out.println(fileName);
                 profile_picture = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
-                Image newPfp = new Image(String.valueOf(targetPath));
+                Image newPfp = new Image(targetPath.toUri().toString());
                 profilePicId.setImage(newPfp);
+                profilePicId.getParent().requestLayout();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
@@ -183,6 +184,7 @@ public class EditUser implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Profile picture added successfully!");
                 alert.showAndWait();
+
             } catch (IOException e) {
                 // Show error message if an exception occurs during file copying
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -306,5 +308,32 @@ public class EditUser implements Initializable {
             portfolioId.setText(currentArtist.getPortfolio());
             biographyId.setText(currentArtist.getBiography());
         }
+    }
+
+    @FXML
+    void redirectHome(MouseEvent event) throws IOException {
+        // Get the current stage from any node in the scene graph
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Load the new FXML file
+        Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Log In");
+
+        // Close the old stage
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
     }
 }

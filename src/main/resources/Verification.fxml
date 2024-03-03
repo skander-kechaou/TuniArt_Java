@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Verification">
    <children>
       <Region layoutX="112.0" layoutY="242.0" prefHeight="249.0" prefWidth="626.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
@@ -23,13 +22,13 @@
             <Font name="Gill Sans MT" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="emailFieldId" layoutX="373.0" layoutY="420.0" prefHeight="26.0" prefWidth="486.0" promptText="Enter verification code" style="-fx-background-color: #fdf8db;" />
-      <Button fx:id="continueButton" layoutX="4.0" layoutY="358.0" mnemonicParsing="false" onAction="#redirectToVerif" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: E18B10; -fx-background-radius: 55;" text="Continue" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="verficationCodeId" layoutX="182.0" layoutY="358.0" prefHeight="26.0" prefWidth="486.0" promptText="Enter verification code" style="-fx-background-color: #fdf8db;" />
+      <Button fx:id="continueButton" layoutX="375.0" layoutY="429.0" mnemonicParsing="false" onAction="#redirectToPwd" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: E18B10; -fx-background-radius: 55;" text="Continue" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Gill Sans MT" size="16.0" />
          </font>
       </Button>
-      <Text fx:id="resetPwdTextId" fill="#fdf8db" layoutX="282.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verify your Identity">
+      <Text fx:id="resetPwdTextId" fill="#fdf8db" layoutX="282.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verify your Identity">
          <font>
             <Font name="Gill Sans MT" size="35.0" />
          </font>

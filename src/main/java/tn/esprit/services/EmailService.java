@@ -5,7 +5,7 @@ import javax.mail.internet.*;
 import java.util.Properties;
 
 public class EmailService {
-    public static void sendVerificationEmail(String toEmail, String verificationCode) {
+    public static void sendVerificationEmail(String toEmail, String verificationCode, String subject, String body) {
         final String username = "skander.kechaou.e@gmail.com"; // Your email
         final String password = "rlaklrxvzzfhuhwe"; // Your password
 
@@ -32,8 +32,8 @@ public class EmailService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("[Tuni'Art] Password Reset Verification Code");
-            message.setText("Dear User,\n\nYour verification code is: " + verificationCode + "\n\nRegards,\nTuni'Art");
+            message.setSubject(subject);
+            message.setText(body);
             System.out.println(message);
             Transport.send(message);
 
@@ -44,4 +44,5 @@ public class EmailService {
             throw new RuntimeException(e);
         }
     }
+
 }

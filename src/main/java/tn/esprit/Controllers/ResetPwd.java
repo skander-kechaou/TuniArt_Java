@@ -19,6 +19,7 @@ import tn.esprit.entities.User;
 import tn.esprit.services.EmailService;
 import tn.esprit.services.UserService;
 import tn.esprit.services.VerificationCodeGenerator;
+import tn.esprit.utils.SessionManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -104,6 +105,10 @@ public class ResetPwd implements Initializable {
 
             // Generate a verification code
             int uid = us.getUidByEmail(emailFieldId.getText());
+
+            // Store the UID in the session
+            SessionManager.getInstance().setCurrentUserUid(uid);
+
             User u = us.searchByUid(uid);
             String verificationCode = VerificationCodeGenerator.generateVerificationCode(u);
             u.setVerification_code(verificationCode);
@@ -112,7 +117,9 @@ public class ResetPwd implements Initializable {
             System.out.println(u.getEmail()+" "+verificationCode);
 
             // Send the verification email
-            EmailService.sendVerificationEmail(u.getEmail(), verificationCode);
+            String subject = "[Tuni'Art] Password Reset Verification Code";
+            String body = "Dear User,\n\nYour verification code is: " + verificationCode + "\n\nRegards,\nTuni'Art";
+            EmailService.sendVerificationEmail(u.getEmail(), verificationCode, subject, body);
 
             // Show success message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -124,7 +131,7 @@ public class ResetPwd implements Initializable {
             Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Load the new FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("/LogIn.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Verification.fxml"));
             javafx.scene.image.Image icon = new Image("file:/C:/Users/DELL/Documents/3A/Semester 2/PIDEV/Tuni Art/src/images/logo.png");
 
             // Create a new stage for the new window

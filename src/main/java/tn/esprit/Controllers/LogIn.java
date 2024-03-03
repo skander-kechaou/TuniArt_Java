@@ -65,6 +65,8 @@ public class LogIn implements Initializable {
     @FXML
     private Text passwordAlertId;
 
+    User currentUser;
+
     @FXML
     void HoverIn(MouseEvent event) {
         LogInButton.setStyle("-fx-background-color: #E15B10; -fx-background-radius: 55;");
@@ -126,7 +128,15 @@ public class LogIn implements Initializable {
             Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Load the new FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+            currentUser = us.searchByUid(uid);
+            Parent root;
+            if(currentUser.getRole().equals("Admin"))
+            {
+                root = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
+            }
+            else {
+                root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+            }
             javafx.scene.image.Image icon = new Image("file:/C:/Users/DELL/Documents/3A/Semester 2/PIDEV/Tuni Art/src/images/logo.png");
 
             // Create a new stage for the new window

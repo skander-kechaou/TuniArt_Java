@@ -14,7 +14,7 @@ public class MainFx extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/LogIn.fxml"));
-        javafx.scene.image.Image icon = new Image("file:/C:/Users/DELL/Documents/3A/Semester 2/PIDEV/Tuni Art/src/images/logo.png");
+        javafx.scene.image.Image icon = new Image("file:src/images/logo.png");
         // Set the icon for the primary stage
         stage.getIcons().add(icon);
         Parent root=loader.load();

@@ -1,6 +1,8 @@
 package tn.esprit.Controllers;
 
+import com.github.cage.Cage;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +17,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.entities.User;
 import tn.esprit.services.UserService;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -114,16 +119,33 @@ public class SignUp implements Initializable {
     @FXML
     private Text pfpTextId;
 
+    @FXML
+    private TextField captchaField;
+
+    @FXML
+    private ImageView captchaImage;
+
+    @FXML
+    private Text captchaAlert;
+
+    @FXML
+    private ImageView regenerateBtn;
+
     String profile_picture;
 
     private final String[] genders = {"M", "F"};
+
+    private String captchaText;
 
     @FXML
     public void initialize(URL arg0, ResourceBundle arg1) {
         genderChoiceId.setItems(FXCollections.observableArrayList(genders));
         genderChoiceId.getSelectionModel().selectFirst();
-        Image image = new Image("file:C:\\Users\\DELL\\Documents\\3A\\Semester 2\\PIDEV\\Tuni Art\\src\\images\\logo.png");
+        Image image = new Image("file:src\\images\\logo.png");
         logoId.setImage(image);
+        Image regenerate = new Image("file:src/images/refresh-page-option.png");
+        regenerateBtn.setImage(regenerate);
+        updateCaptcha();
 
     }
 
@@ -194,6 +216,11 @@ public class SignUp implements Initializable {
             valid = false;
         }
 
+        if (!captchaText.equals(captchaField.getText())) {
+            captchaAlert.setText("  X");
+            captchaAlert.setStyle("-fx-background-color: #ff4d4d;");
+            valid = false;
+        }
 
         return valid;
     }
@@ -360,6 +387,28 @@ public class SignUp implements Initializable {
         newStage.show();
 
         System.out.println("moved");
+    }
+
+    private void updateCaptcha() {
+        Cage cage = new Cage();
+        String captchaText = cage.getTokenGenerator().next();
+
+        // Generate captcha image data
+        byte[] imageData = cage.draw(captchaText);
+
+        // Create Image object from byte array
+        javafx.scene.image.Image captchaImageSrc = new javafx.scene.image.Image(new ByteArrayInputStream(imageData));
+
+        // Set the Image object to the ImageView
+        captchaImage.setImage(captchaImageSrc);
+
+        // Store captcha text somewhere to validate later
+        this.captchaText = captchaText;
+    }
+
+    @FXML
+    void regenerateCaptcha(MouseEvent event) {
+        updateCaptcha();
     }
 
 }

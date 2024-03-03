@@ -25,7 +25,7 @@
    <children>
       <Region prefHeight="100.0" prefWidth="862.0" style="-fx-background-color: FDF8DB; -fx-background-radius: 30;" />
       <Region prefHeight="56.0" prefWidth="862.0" style="-fx-background-color: FDF8DB;" />
-      <ImageView fx:id="logoId" fitHeight="89.0" fitWidth="89.0" layoutX="30.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoId" fitHeight="89.0" fitWidth="89.0" layoutX="30.0" layoutY="6.0" onMouseClicked="#redirectHome" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/logo.png" />
          </image>
@@ -71,10 +71,13 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="171.0" prefWidth="270.0" spacing="5.0">
                            <children>
-                              <ImageView fx:id="profilePicId" fitHeight="117.0" fitWidth="127.0" onDragDetected="#changePfp" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profilePicId" fitHeight="117.0" fitWidth="127.0" onMouseClicked="#changePfp" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../images/Profile-PNG-File.png" />
                                  </image>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
                               </ImageView>
                               <Text fx:id="userId" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Name">
                                  <font>

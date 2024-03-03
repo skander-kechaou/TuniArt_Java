@@ -18,12 +18,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Profile">
    <children>
       <Region prefHeight="100.0" prefWidth="862.0" style="-fx-background-color: FDF8DB; -fx-background-radius: 30;" />
       <Region prefHeight="56.0" prefWidth="862.0" style="-fx-background-color: FDF8DB;" />
-      <ImageView fx:id="logoId" fitHeight="89.0" fitWidth="89.0" layoutX="30.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoId" fitHeight="89.0" fitWidth="89.0" layoutX="30.0" layoutY="6.0" onMouseClicked="#redirectHome" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/logo.png" />
          </image>
@@ -67,7 +66,7 @@
                <left>
                   <VBox prefHeight="470.0" prefWidth="270.0" style="-fx-background-color: E8E8E8;" BorderPane.alignment="CENTER">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="171.0" prefWidth="270.0" spacing="5.0">
+                        <VBox alignment="CENTER" prefHeight="171.0" prefWidth="270.0" spacing="10.0">
                            <children>
                               <ImageView fx:id="profilePicId" fitHeight="117.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -79,55 +78,59 @@
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="177.0" prefWidth="270.0">
+                           <children>
                               <Button fx:id="editButton" mnemonicParsing="false" onAction="#editUser" prefHeight="24.0" prefWidth="190.0" style="-fx-background-color: E8E8E8; -fx-border-color: black;" text="Edit Info">
                                  <font>
-                                    <Font name="Gill Sans MT" size="12.0" />
+                                    <Font name="Gill Sans MT" size="14.0" />
                                  </font>
-                              </Button>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="270.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #2AA7A0;" text="Message" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="pdfButton" mnemonicParsing="false" onAction="#generatePDF" prefHeight="24.0" prefWidth="190.0" style="-fx-background-color: #2AA7A0;" text="Generate PDF" textFill="WHITE">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #2AA7A0;" text="Subscribe" textFill="#2aa7a0">
+                              <Button fx:id="deactivateAccountButton" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #FC6541;" text="Deactivate Account" textFill="WHITE">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Button>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </VBox>
-                        <VBox prefHeight="151.0" prefWidth="270.0" spacing="5.0">
+                        <VBox prefHeight="141.0" prefWidth="270.0" spacing="5.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Views : ">
+                              <Text fx:id="nbViews" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Views : ">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Appreciations :">
+                              <Text fx:id="followers" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
-                                 <font>
-                                    <Font name="Gill Sans MT" size="14.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Following :">
+                              <Text fx:id="following" strokeType="OUTSIDE" strokeWidth="0.0" text="Following :">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Text>
                               <HBox prefHeight="10.0" prefWidth="255.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio : " wrappingWidth="61.00390625">
+                                    <Text fx:id="portfolio" strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio : " wrappingWidth="61.00390625">
                                        <font>
                                           <Font name="Gill Sans MT" size="14.0" />
                                        </font>
@@ -135,34 +138,30 @@
                                           <Insets top="3.0" />
                                        </HBox.margin>
                                     </Text>
-                                    <Hyperlink prefHeight="42.0" prefWidth="42.0" text="Link">
+                                    <Hyperlink fx:id="portfolioLink" onAction="#openPortfolio" prefHeight="42.0" prefWidth="42.0" text="Link">
                                        <font>
                                           <Font name="Gill Sans MT" size="14.0" />
                                        </font>
                                     </Hyperlink>
                                  </children>
                               </HBox>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Biography :">
+                              <Text fx:id="biography" strokeType="OUTSIDE" strokeWidth="0.0" text="Biography :">
                                  <font>
                                     <Font name="Gill Sans MT" size="14.0" />
                                  </font>
                               </Text>
                            </children>
                            <VBox.margin>
-                              <Insets />
+                              <Insets top="20.0" />
                            </VBox.margin>
                            <padding>
                               <Insets left="20.0" top="10.0" />
                            </padding>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="66.0" prefWidth="270.0">
-                           <children>
-                              <Button fx:id="deactivateAccountButton" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: #FC6541;" text="Deactivate Account" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gill Sans MT" size="14.0" />
-                                 </font>
-                              </Button>
-                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </VBox>
                      </children>
                   </VBox>
