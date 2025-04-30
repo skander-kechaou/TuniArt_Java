@@ -931,4 +931,33 @@ public class Profile implements Initializable {
         container.getChildren().clear();
         displayEvents();
     }
+
+    @FXML
+    void redirectToListOrders(MouseEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/listOrders.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+    }
 }

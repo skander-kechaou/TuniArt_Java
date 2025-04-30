@@ -91,9 +91,11 @@ public class Art_PieceService implements IService<Art_Piece> {
             String Style = res.getString(7);
             String image_id = res.getString(9);
             String music_path = res.getString(10);
+            int art_views = res.getInt(11);
+            Boolean isAvailable = res.getBoolean(12);
 
 
-            Art_Piece a = new Art_Piece(Art_ref,Art_title, Art_price, aid, Type, Creation, Description ,Style,image_id,music_path);
+            Art_Piece a = new Art_Piece(Art_ref,Art_title, Art_price, aid, Type, Creation, Description ,Style,image_id,music_path, art_views, isAvailable);
             Art_Pieces.add(a);
         }
         return Art_Pieces;

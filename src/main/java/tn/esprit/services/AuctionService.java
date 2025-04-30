@@ -68,7 +68,44 @@ public class AuctionService implements IService<Auction> {
     }
 
 
+    public List<Auction> displayListByInteraction() throws SQLException {
+        String query = "SELECT * FROM auction ORDER BY interactions";
+        stm = con.createStatement();
+        ResultSet res = stm.executeQuery(query);
+        List<Auction> auctions = new ArrayList<>();
+        while (res.next()) {
+            int auction_ref = res.getInt(1);
+            String auction_name = res.getString(2);
+            Date start_date = res.getDate(3);
+            Date end_date = res.getDate(4);
+            float threshold = res.getFloat(5);
+            int art_ref = res.getInt(6);
+            int uid = res.getInt(7);
 
+            Auction a = new Auction(auction_ref ,auction_name, start_date, end_date, threshold, art_ref,uid);
+            auctions.add(a);
+        }
+        return auctions;
+    }
+    public List<Auction> displayListByName() throws SQLException {
+        String query = "SELECT * FROM auction ORDER BY auction_name";
+        stm = con.createStatement();
+        ResultSet res = stm.executeQuery(query);
+        List<Auction> auctions = new ArrayList<>();
+        while (res.next()) {
+            int auction_ref = res.getInt(1);
+            String auction_name = res.getString(2);
+            Date start_date = res.getDate(3);
+            Date end_date = res.getDate(4);
+            float threshold = res.getFloat(5);
+            int art_ref = res.getInt(6);
+            int uid = res.getInt(7);
+
+            Auction a = new Auction(auction_ref ,auction_name, start_date, end_date, threshold, art_ref,uid);
+            auctions.add(a);
+        }
+        return auctions;
+    }
 
 
     @Override

@@ -1,5 +1,7 @@
 package tn.esprit.services;
 
+import tn.esprit.entities.DeliveryAgency;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,4 +14,5 @@ public interface IService<T> {
     void delete(int id) throws  SQLException;
 
     List<T> diplayList() throws  SQLException;
+
 }

@@ -73,6 +73,11 @@
             <Button fx:id="go_to_users" mnemonicParsing="false" onAction="#go_to_users" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Users" textFill="WHITE" />
             <Button fx:id="go_to_events" mnemonicParsing="false" onAction="#go_to_events" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Events" textFill="WHITE" />
             <Button fx:id="go_to_auctions" mnemonicParsing="false" onAction="#go_to_auctions" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Auctions" textFill="WHITE" />
+            <ImageView fx:id="cartId" fitHeight="37.0" fitWidth="46.0" onMouseClicked="#displayCart" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/panier.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
       <ImageView fx:id="profilePictureId" fitHeight="37.0" fitWidth="43.0" layoutX="801.0" layoutY="38.0" onMouseClicked="#userMenu" pickOnBounds="true" preserveRatio="true">

@@ -37,7 +37,7 @@
                         <Insets bottom="20.0" top="30.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
+                  <VBox alignment="CENTER" prefHeight="350.0" prefWidth="262.0" spacing="25.0">
                      <children>
                         <Button fx:id="usersButton" mnemonicParsing="false" onMouseClicked="#showUsers" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Users">
                            <font>
@@ -64,12 +64,17 @@
                               <Font name="Gill Sans MT" size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Orders">
+                        <Button mnemonicParsing="false" onMouseClicked="#showOrders" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Orders">
                            <font>
                               <Font name="Gill Sans MT" size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Deliveries">
+                        <Button mnemonicParsing="false" onAction="#toDeliveries" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Deliveries">
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#toAgencies" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Delivery Agencies">
                            <font>
                               <Font name="Gill Sans MT" size="14.0" />
                            </font>

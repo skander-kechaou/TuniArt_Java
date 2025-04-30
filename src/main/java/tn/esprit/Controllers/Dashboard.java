@@ -877,6 +877,10 @@ public class Dashboard implements Initializable {
         }
     }
 
+    public void displayOrders() {
+
+    }
+
     @FXML
     void showArts(MouseEvent event) {
         // Clear existing user boxes before adding new ones
@@ -913,6 +917,63 @@ public class Dashboard implements Initializable {
         container.getChildren().clear();
         managementTextId.setText("EVENTS MANAGEMENT");
         displayEvents();
+    }
+
+    @FXML
+    void showOrders(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OrderManagement.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void toDeliveries(ActionEvent event) throws IOException {
+
+        // Load the new FXML file
+        Parent root = FXMLLoader.load(getClass().getResource("/DeliveryManagement.fxml"));
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Log In");
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+    }
+
+    @FXML
+    void toAgencies(ActionEvent event) throws IOException {
+
+        // Load the new FXML file
+        Parent root = FXMLLoader.load(getClass().getResource("/DeliveryAgencyManagement.fxml"));
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Log In");
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
     }
 
 

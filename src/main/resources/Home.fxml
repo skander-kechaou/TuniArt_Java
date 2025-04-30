@@ -41,7 +41,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Text layoutX="133.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuni'Art">
+      <Text fx:id="pageTitle" layoutX="133.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuni'Art">
          <font>
             <Font name="Kaushan Script" size="64.0" />
          </font>

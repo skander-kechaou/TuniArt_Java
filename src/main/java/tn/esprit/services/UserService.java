@@ -279,7 +279,8 @@ public class UserService implements IService<User> {
                 if (resultSet.next()) {
                     String storedPassword = resultSet.getString("password");
                     // Check if the stored password matches the provided password
-                    return storedPassword.equals(password);
+                    String hashedPwd = SHA256PasswordEncoder.hashPassword(password);
+                    return storedPassword.equals(hashedPwd);
                 }
             }
         }

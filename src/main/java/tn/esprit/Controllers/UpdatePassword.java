@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.entities.User;
+import tn.esprit.services.SHA256PasswordEncoder;
 import tn.esprit.services.UserService;
 import tn.esprit.utils.SessionManager;
 
@@ -148,7 +149,8 @@ public class UpdatePassword implements Initializable {
             System.out.println("validated pwd");
             if (pwdField.getText().equals(rePwdField.getText())) {
                 System.out.println("match");
-                currentUser.setPassword(pwdField.getText());
+                String hashedPwd = SHA256PasswordEncoder.hashPassword(pwdField.getText());
+                currentUser.setPassword(hashedPwd);
                 try {
                     us.update(currentUser);
                 } catch (SQLException e) {

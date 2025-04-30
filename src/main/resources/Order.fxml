@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="503.0" prefWidth="286.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.OrderController">
+    <children>
+        <AnchorPane prefHeight="502.0" prefWidth="285.0" style="-fx-background-color: #49BFA6;">
+            <children>
+                <Label fx:id="totalPriceLabel" layoutX="50.0" layoutY="50.0" text="Total Price: TND 0.0" />
+                <Button fx:id="confirmButton" layoutX="50.0" layoutY="100.0" onAction="#confirmOrder" prefHeight="26.0" prefWidth="174.0" text="Confirm" />
+            <Button fx:id="Convert1" layoutX="50.0" layoutY="139.0" onAction="#convert1" prefHeight="26.0" prefWidth="174.0" text="Convert" />
+            <Label fx:id="joke_id" layoutX="5.0" layoutY="337.0" prefHeight="165.0" prefWidth="286.0" text="Label" textFill="#fcf8f8" />
+                <!-- Add more UI components as needed -->
+            </children>
+        </AnchorPane>
+    </children>
+
+</AnchorPane>

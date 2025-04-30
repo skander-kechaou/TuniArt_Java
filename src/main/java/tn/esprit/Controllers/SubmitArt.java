@@ -258,6 +258,7 @@ public class SubmitArt implements Initializable {
             try {
                 // Create a target directory if it doesn't exist
                 File targetDir = new File("src/images");
+                File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/images");
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -267,9 +268,13 @@ public class SubmitArt implements Initializable {
                 System.out.println(fileName);
                  art_image = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
+                Path targetPathWeb = new File(targetDirWeb, fileName).toPath();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Copy the selected file to the WEB directory
+                Files.copy(selectedFile.toPath(), targetPathWeb, StandardCopyOption.REPLACE_EXISTING);
 
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -375,6 +380,8 @@ public class SubmitArt implements Initializable {
 
                 // Save the captured image to a file
                 File targetDir = new File("src/images");
+                File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/images");
+
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -383,8 +390,10 @@ public class SubmitArt implements Initializable {
                 String dateTime = dateFormat.format(new Date());
                 String fileName = "captured_image_" + dateTime + ".jpg";
                 File targetFile = new File(targetDir, fileName);
+                File targetFileWeb = new File(targetDirWeb, fileName);
 
                 ImageIO.write(image, "JPG", targetFile);
+                ImageIO.write(image, "JPG", targetFileWeb);
                 System.out.println("Image saved to: " + targetFile.getAbsolutePath());
                 art_image = fileName;
 
@@ -438,6 +447,8 @@ public class SubmitArt implements Initializable {
         Button saveButton = new Button("Save");
         saveButton.setOnAction(event1 -> {
             File targetDir = new File("src/images");
+            File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/images");
+
             if (!targetDir.exists()) {
                 targetDir.mkdirs();
             }
@@ -447,6 +458,7 @@ public class SubmitArt implements Initializable {
             String dateTime = dateFormat.format(new Date());
             String fileName = "captured_image_" + dateTime + ".png";
             File targetFile = new File(targetDir, fileName);
+            File targetFileWeb = new File(targetDirWeb, fileName);
 
             // Create a WritableImage from the canvas
             WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
@@ -456,6 +468,7 @@ public class SubmitArt implements Initializable {
             // Save the WritableImage to file
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "PNG", targetFile);
+                ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null), "PNG", targetFileWeb);
                 System.out.println("Image saved to: " + targetFile.getAbsolutePath());
 
                 // Assign the filename to the art_image variable
@@ -514,6 +527,8 @@ public class SubmitArt implements Initializable {
             try {
                 // Create a target directory if it doesn't exist
                 File targetDir = new File("src/music");
+                File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/music");
+
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -522,9 +537,13 @@ public class SubmitArt implements Initializable {
                 String fileName = selectedFile.getName();
                 musicFilePath = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
+                Path targetPathWeb = new File(targetDirWeb, fileName).toPath();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Copy the selected file to the WEB directory
+                Files.copy(selectedFile.toPath(), targetPathWeb, StandardCopyOption.REPLACE_EXISTING);
 
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

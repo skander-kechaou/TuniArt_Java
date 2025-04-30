@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.entities.Artist;
 import tn.esprit.entities.User;
+import tn.esprit.services.SHA256PasswordEncoder;
 import tn.esprit.services.UserService;
 import tn.esprit.utils.SessionManager;
 
@@ -107,6 +108,7 @@ public class EditUser implements Initializable {
             try {
                 // Create a target directory if it doesn't exist
                 File targetDir = new File("src/assets");
+                File targetDirWeb = new File("C:/Users/DELL/Documents/3A/Tuni-Art/src/assets");
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -116,9 +118,13 @@ public class EditUser implements Initializable {
                 System.out.println(fileName);
                 portfolio = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
+                Path targetPathWeb = new File(targetDirWeb, fileName).toPath();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Copy the selected file to the target WEB directory
+                Files.copy(selectedFile.toPath(), targetPathWeb, StandardCopyOption.REPLACE_EXISTING);
 
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -162,6 +168,7 @@ public class EditUser implements Initializable {
             try {
                 // Create a target directory if it doesn't exist
                 File targetDir = new File("src/images");
+                File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/images/profilepics");
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -171,12 +178,16 @@ public class EditUser implements Initializable {
                 System.out.println(fileName);
                 profile_picture = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
+                Path targetPathWeb = new File(targetDirWeb, fileName).toPath();
                 Image newPfp = new Image(targetPath.toUri().toString());
                 profilePicId.setImage(newPfp);
                 profilePicId.getParent().requestLayout();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Copy the selected file to the WEB directory
+                Files.copy(selectedFile.toPath(), targetPathWeb, StandardCopyOption.REPLACE_EXISTING);
 
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -203,7 +214,8 @@ public class EditUser implements Initializable {
             currentUser.setFname(fnameId.getText());
             currentUser.setLname(lnameId.getText());
             currentUser.setEmail(emailId.getText());
-            currentUser.setPassword(passwordId.getText());
+            String hashedPwd = SHA256PasswordEncoder.hashPassword(passwordId.getText());
+            currentUser.setPassword(hashedPwd);
             currentUser.setPhone_nb(Integer.parseInt(phoneNumber));
             currentUser.setBirth_date(Date.valueOf(birthdayId.getValue()));
             currentUser.setProfile_pic(profile_picture);

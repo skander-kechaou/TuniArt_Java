@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Integer?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderpane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.OrderManagementController">
+
+    <center>
+        <VBox>
+            <TableView fx:id="OrderTable" prefHeight="251.0" prefWidth="687.0">
+                <columns>
+                    <TableColumn text="Order ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="orderId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="User ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="userId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Total Price">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="totalPrice" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Order Date">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="orderDate" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Status">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="status" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <GridPane prefHeight="154.0" prefWidth="513.0">
+                <Label text="Order ID" GridPane.rowIndex="2" />
+                <TextField fx:id="orderIdField" promptText="orderId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+
+                <Label text="User ID" GridPane.rowIndex="3" />
+                <TextField fx:id="userIdField" promptText="User ID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Total Price" GridPane.rowIndex="4" />
+                <TextField fx:id="totalPriceField" promptText="Total Price" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label text="Order Date" GridPane.rowIndex="5" />
+                <DatePicker fx:id="orderDatePicker" layoutX="40" layoutY="40" prefHeight="26.0" prefWidth="149.0" promptText="Select Date" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+
+                <Label text="Status" GridPane.rowIndex="6" />
+                <ChoiceBox fx:id="statusChoiceBox" layoutX="126.0" layoutY="191.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="0" />
+                            <Integer fx:value="1" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+
+                <HBox GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <Button layoutX="1.0" layoutY="2.0" onAction="#deleteOrder" text="Delete" translateX="2.0" GridPane.columnIndex="4" />
+                <Button fx:id="sortButton" onAction="#handleSortButton" text="Sort by UID" />
+                <Button fx:id="sortDateButton" onAction="#handleSortDateButton" text="Sort by Date" GridPane.columnIndex="1" />
+                <Button onAction="#searchOrder" text="Search by UID" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                <Button onAction="#addOrder" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                <TextField fx:id="searchField" promptText="Search by UID" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+
+
+            </GridPane>
+            <Button onAction="#updateOrder" text="Update" textAlignment="CENTER" />
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AdminMain">
+    <top>
+        <HBox alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #f0f0f0;">
+            <children>
+                <ImageView fitHeight="50.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../main/java/tn/esprit/images/logo.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="929.0" style="-fx-background-color: #088F8F;" text="Tuni'Art" textAlignment="CENTER">
+                    <font>
+                        <javafx.scene.text.Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+   <right>
+        <VBox prefHeight="540.0" prefWidth="946.0" style="-fx-background-color: #DBD399;" BorderPane.alignment="CENTER">
+            <ToolBar>
+                <Button onAction="#loadUserManagement" text="User Management" />
+                <Button onAction="#loadProductManagement" text="Product Management" />
+                <Button onAction="#loadOrderManagement" text="Order Management" />
+                <Button onAction="#loadEventManagement" text="Event Management" />
+                <Button onAction="#loadDeliveryManagement" text="Delivery Management" />
+                <Button onAction="#loadDeliveryAgencyManagement" text="Delivery Agency Management" />
+            </ToolBar>
+        </VBox>
+   </right>
+</BorderPane>

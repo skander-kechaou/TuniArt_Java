@@ -22,6 +22,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.entities.User;
+import tn.esprit.services.SHA256PasswordEncoder;
 import tn.esprit.services.UserService;
 
 import java.io.ByteArrayInputStream;
@@ -233,11 +234,12 @@ public class SignUp implements Initializable {
                 // Input fields are valid, proceed with adding user
                 boolean gender = genderChoiceId.getValue().equals("F");
                 String phoneNumber = phoneFieldId.getText();
+                String hashedPwd = SHA256PasswordEncoder.hashPassword(PasswordFieldId.getText());
                 if(profile_picture==null) {
-                    us.addd(new User(firstNameFieldId.getText(), lastNameFieldId.getText(), emailFieldId.getText(), gender, true, Integer.parseInt(phoneNumber), Date.valueOf(datePickerId.getValue()), PasswordFieldId.getText(), "User"));
+                    us.addd(new User(firstNameFieldId.getText(), lastNameFieldId.getText(), emailFieldId.getText(), gender, true, Integer.parseInt(phoneNumber), Date.valueOf(datePickerId.getValue()), hashedPwd, "User"));
                 }
                 else {
-                    us.addd(new User(firstNameFieldId.getText(), lastNameFieldId.getText(), emailFieldId.getText(), gender, true, Integer.parseInt(phoneNumber), Date.valueOf(datePickerId.getValue()), profile_picture, PasswordFieldId.getText(), "User"));
+                    us.addd(new User(firstNameFieldId.getText(), lastNameFieldId.getText(), emailFieldId.getText(), gender, true, Integer.parseInt(phoneNumber), Date.valueOf(datePickerId.getValue()), profile_picture, hashedPwd, "User"));
 
                 }
 
@@ -312,6 +314,7 @@ public class SignUp implements Initializable {
             try {
                 // Create a target directory if it doesn't exist
                 File targetDir = new File("src/images");
+                File targetDirWeb = new File("C:/xampp/htdocs/tuniart-integration/public/assets/images/profilepics");
                 if (!targetDir.exists()) {
                     targetDir.mkdirs();
                 }
@@ -321,9 +324,13 @@ public class SignUp implements Initializable {
                 System.out.println(fileName);
                 profile_picture = fileName;
                 Path targetPath = new File(targetDir, fileName).toPath();
+                Path targetPathWeb = new File(targetDirWeb, fileName).toPath();
 
                 // Copy the selected file to the target directory
                 Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Copy the selected file to the WEB directory
+                Files.copy(selectedFile.toPath(), targetPathWeb, StandardCopyOption.REPLACE_EXISTING);
 
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

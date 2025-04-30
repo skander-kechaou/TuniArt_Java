@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import tn.esprit.entities.Delivery?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.Controllers.DeliveryManagementController" prefHeight="400.0" prefWidth="600.0">
+
+    <center>
+        <VBox>
+            <TableView fx:id="deliveryTable" prefHeight="200.0" prefWidth="200.0">
+                <columns>
+                    <TableColumn text="Delivery ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="deliveryId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Order ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="orderId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Estimated Date">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="estimatedDate"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Delivery Fees">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="deliveryFees"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Destination">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="destination"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="State">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="state"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Agency ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="agencyId"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <GridPane>
+                <Label text="Order ID" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="orderIdField" promptText="Order ID" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Estimated Date" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="estimatedDateField" promptText="Estimated Date" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Delivery Fees" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="deliveryFeesField" promptText="Delivery Fees" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Destination" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="destinationField" promptText="Destination" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="State" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <TextField fx:id="stateField" promptText="State" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <Label text="Agency ID" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <TextField fx:id="agencyIdField" promptText="Agency ID" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="2">
+                    <TextField fx:id="searchField" promptText="Search"/>
+                    <Button text="Search" onAction="#searchDelivery"/>
+                </HBox>
+
+                <Button text="Add" onAction="#addDelivery" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <Button text="Update" onAction="#updateDelivery" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                <Button text="Delete" onAction="#deleteDelivery" GridPane.columnIndex="2" GridPane.rowIndex="8"/>
+            </GridPane>
+        </VBox>
+    </center>
+
+</BorderPane>

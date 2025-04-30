@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="479.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.DeliveryAgencyManagementController">
+
+    <center>
+        <VBox>
+            <TableView fx:id="tableView">
+                <columns>
+                    <TableColumn fx:id="agencyIdColumn" text="Agency ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="agencyId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="agencyNameColumn" prefWidth="156.0" text="Agency Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="agencyName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="agencyAddressColumn" prefWidth="148.0" text="Agency Address">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="agencyAddress" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="nbDeliveriesColumn" minWidth="6.0" prefWidth="178.0" text="Number of Deliveries">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="nbDeliveries" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <left>
+        <VBox>
+            <TextField fx:id="agencyIdTextField" promptText="Agency ID" />
+            <TextField fx:id="agencyNameTextField" promptText="Agency Name" />
+            <TextField fx:id="agencyAddressTextField" promptText="Agency Address" />
+            <TextField fx:id="nbDeliveriesTextField" promptText="Number of Deliveries" />
+            <Button onAction="#addAgency" text="Add" />
+            <Button onAction="#updateAgency" text="Update" />
+            <Button onAction="#deleteAgency" text="Delete" />
+        </VBox>
+    </left>
+
+</BorderPane>
