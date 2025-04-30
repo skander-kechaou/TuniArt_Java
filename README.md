@@ -12,14 +12,11 @@
 
 ## Tech Stack
 
-- **Symfony Framework** (PHP)
-- **Twig** for templating
-- **CSS** for design
-- **JavaScript** for dynamic events
-- **Yaml**
 - **MySQL** (via XAMPP)
 - **Java** with JavaFX
 - **SceneBuilder** for GUI design
+- **Yaml**
+- **XML**
 
 ## Getting Started
 
