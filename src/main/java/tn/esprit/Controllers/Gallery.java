@@ -5,7 +5,10 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+<<<<<<< HEAD
 import javafx.application.Platform;
+=======
+>>>>>>> 5925dd5 (User)
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +36,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+<<<<<<< HEAD
 import javafx.stage.StageStyle;
 import tn.esprit.entities.Art_Piece;
 import tn.esprit.entities.Cart;
@@ -41,6 +45,12 @@ import tn.esprit.services.Art_PieceService;
 import tn.esprit.services.CartService;
 import tn.esprit.services.UserService;
 import tn.esprit.utils.MyDatabase;
+=======
+import tn.esprit.entities.Art_Piece;
+import tn.esprit.entities.User;
+import tn.esprit.services.Art_PieceService;
+import tn.esprit.services.UserService;
+>>>>>>> 5925dd5 (User)
 import tn.esprit.utils.SessionManager;
 
 import java.awt.image.BufferedImage;
@@ -49,19 +59,26 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+=======
+import java.sql.SQLException;
+>>>>>>> 5925dd5 (User)
 import java.util.*;
 
 public class Gallery implements Initializable {
 
+<<<<<<< HEAD
     private Tooltip cartTooltip = new Tooltip();
 
     private Connection connection;
 
+=======
+>>>>>>> 5925dd5 (User)
     Art_PieceService as = new Art_PieceService();
     UserService us = new UserService();
     User currentUser;
@@ -78,9 +95,12 @@ public class Gallery implements Initializable {
     private ImageView profilePictureId;
 
     @FXML
+<<<<<<< HEAD
     private ImageView cartId;
 
     @FXML
+=======
+>>>>>>> 5925dd5 (User)
     private ImageView logoId;
 
     @FXML
@@ -164,8 +184,11 @@ public class Gallery implements Initializable {
             throw new RuntimeException(e);
         }
 
+<<<<<<< HEAD
         Image cart = new Image("file:src\\images\\panier.png");
         cartId.setImage(cart);
+=======
+>>>>>>> 5925dd5 (User)
         Image logo = new Image("file:src\\images\\logo.png");
         logoId.setImage(logo);
         Image print = new Image("file:src\\images\\tun.png");
@@ -261,10 +284,16 @@ public class Gallery implements Initializable {
             updateButton.setUserData(art.getArt_ref());
             Button deleteButton = new Button("Delete");
             Button playButton = new Button("Play");
+<<<<<<< HEAD
             Button AddCart = new Button("Add to Cart");
             Label Filller = new Label("     ");
             HBox buttonsBox = new HBox(10); // 10 is the spacing between buttons (adjust as needed)
             buttonsBox.getChildren().addAll( Filller, playButton, AddCart);
+=======
+            Label Filller = new Label("     ");
+            HBox buttonsBox = new HBox(10); // 10 is the spacing between buttons (adjust as needed)
+            buttonsBox.getChildren().addAll( Filller, playButton);
+>>>>>>> 5925dd5 (User)
             buttonsBox.setPadding(new Insets(10, 50, 20, 10));
             buttonsBox.setAlignment(Pos.CENTER);
 
@@ -277,7 +306,11 @@ public class Gallery implements Initializable {
             title_label.setTextFill(Color.WHITE);
             category_label.setTextFill(Color.WHITE);
             //style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Upload Your Image" textFill="WHITE"
+<<<<<<< HEAD
             AddCart.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
+=======
+            updateButton.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
+>>>>>>> 5925dd5 (User)
             deleteButton.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
             playButton.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
             price_label.setTextFill(Color.WHITE);// Set text color to white
@@ -331,6 +364,7 @@ public class Gallery implements Initializable {
                 }
                 });
 
+<<<<<<< HEAD
             AddCart.setOnAction(event -> {
                 // Step 0: Validate Art ID
                 System.out.println("selected art : "+art);
@@ -373,6 +407,8 @@ public class Gallery implements Initializable {
                 }
             });
 
+=======
+>>>>>>> 5925dd5 (User)
             deleteButton.setOnAction(event -> {
                 // Handle delete button action
 
@@ -780,6 +816,7 @@ public class Gallery implements Initializable {
         System.out.println("moved");
     }
 
+<<<<<<< HEAD
     public void initializeOnCloseRequest(Stage stage) {
         // Set an OnCloseRequest event
         stage.setOnCloseRequest(event -> {
@@ -1014,4 +1051,6 @@ public class Gallery implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+=======
+>>>>>>> 5925dd5 (User)
 }

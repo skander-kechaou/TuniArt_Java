@@ -68,6 +68,7 @@ public class AuctionService implements IService<Auction> {
     }
 
 
+<<<<<<< HEAD
     public List<Auction> displayListByInteraction() throws SQLException {
         String query = "SELECT * FROM auction ORDER BY interactions";
         stm = con.createStatement();
@@ -106,6 +107,9 @@ public class AuctionService implements IService<Auction> {
         }
         return auctions;
     }
+=======
+
+>>>>>>> 5925dd5 (User)
 
 
     @Override

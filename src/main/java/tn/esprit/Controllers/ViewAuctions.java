@@ -1,7 +1,10 @@
 package tn.esprit.Controllers;
 
+<<<<<<< HEAD
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+=======
+>>>>>>> 5925dd5 (User)
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +14,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.control.*;
+=======
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+>>>>>>> 5925dd5 (User)
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,14 +39,20 @@ import tn.esprit.services.AuctionService;
 import tn.esprit.services.UserService;
 import tn.esprit.utils.SessionManager;
 
+<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+=======
+>>>>>>> 5925dd5 (User)
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
+=======
+>>>>>>> 5925dd5 (User)
 import java.util.ResourceBundle;
 
 public class ViewAuctions implements Initializable {
@@ -64,31 +79,40 @@ public class ViewAuctions implements Initializable {
     @FXML
     private ImageView profilePictureId;
 
+<<<<<<< HEAD
     @FXML
     private ChoiceBox<String> sortBox;
 
     @FXML
     private Text pageTitle;
 
+=======
+>>>>>>> 5925dd5 (User)
 
     User currentUser;
     UserService us = new UserService();
 
+<<<<<<< HEAD
     ObservableList<String> items = FXCollections.observableArrayList(
             "Interactions",
             "Name"
     );
 
+=======
+>>>>>>> 5925dd5 (User)
     @Override
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Retrieve the UID from the session
+<<<<<<< HEAD
         try {
             Font font = Font.loadFont(new FileInputStream("C:/Users/DELL/Downloads/KaushanScript-Regular.ttf"), 64);
             pageTitle.setFont(font);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+=======
+>>>>>>> 5925dd5 (User)
         int uid = SessionManager.getInstance().getCurrentUserUid();
         try {
             currentUser = us.searchByUid(uid);
@@ -109,12 +133,15 @@ public class ViewAuctions implements Initializable {
         Image logout = new Image("file:src\\images\\sign-out-alt.png");
         logoutButton.setImage(logout);
 
+<<<<<<< HEAD
         sortBox.setItems(items);
 
         // Set default selection
         sortBox.getSelectionModel();
 
 
+=======
+>>>>>>> 5925dd5 (User)
         displayAuctions();
     }
 
@@ -135,6 +162,7 @@ public class ViewAuctions implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     Auction updatedAuction;
     private void placeBid(Auction auction) {
         // Create a TextInputDialog
@@ -203,6 +231,8 @@ public class ViewAuctions implements Initializable {
         });
     }
 
+=======
+>>>>>>> 5925dd5 (User)
     private List<VBox> createauctionBox(List<Auction> auctions) {
         List<VBox> auctionBoxes = new ArrayList<>();
         for (Auction auction : auctions) {
@@ -236,10 +266,15 @@ public class ViewAuctions implements Initializable {
             Button delete = new Button("Delete");
             Button update = new Button("Update");
             HBox buttonsBox = new HBox(10); // 10 is the spacing between buttons (adjust as needed)
+<<<<<<< HEAD
+=======
+            buttonsBox.getChildren().addAll( delete, update);
+>>>>>>> 5925dd5 (User)
 
 
             update.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
             delete.setStyle("-fx-background-color: E18B10; -fx-background-radius: 55; -fx-text-fill: white;");
+<<<<<<< HEAD
             Button placeBidButton = new Button("Place Bid");
             buttonsBox.getChildren().addAll( placeBidButton);
             placeBidButton.setOnAction(event -> {
@@ -247,6 +282,10 @@ public class ViewAuctions implements Initializable {
             });
             auctionBox.setAlignment(Pos.CENTER);
             auctionBox.getChildren().addAll(nameLabel,startdateLabel,enddateLabel,thresholdLabel,artrefLabel, buttonsBox);
+=======
+            auctionBox.setAlignment(Pos.CENTER);
+            auctionBox.getChildren().addAll(nameLabel,startdateLabel,enddateLabel,thresholdLabel,artrefLabel);
+>>>>>>> 5925dd5 (User)
 
             // Add margin to the bottom of the VBox
             auctionBox.setPadding(new Insets(10, 50, 50, 10));
@@ -563,6 +602,7 @@ public class ViewAuctions implements Initializable {
 
         System.out.println("moved");
     }
+<<<<<<< HEAD
 
     public void sort_Auctions() {
         try {
@@ -602,4 +642,6 @@ public class ViewAuctions implements Initializable {
     void sortAuctions(MouseEvent event) {
         sort_Auctions();
     }
+=======
+>>>>>>> 5925dd5 (User)
 }

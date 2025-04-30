@@ -931,6 +931,7 @@ public class Profile implements Initializable {
         container.getChildren().clear();
         displayEvents();
     }
+<<<<<<< HEAD
 
     @FXML
     void redirectToListOrders(MouseEvent event) {
@@ -960,4 +961,6 @@ public class Profile implements Initializable {
 
         System.out.println("moved");
     }
+=======
+>>>>>>> 5925dd5 (User)
 }

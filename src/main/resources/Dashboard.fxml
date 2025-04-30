@@ -55,6 +55,14 @@
                            </font>
                         </Button>
                         <Button mnemonicParsing="false" onMouseClicked="#showEvents" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Events">
+<<<<<<< HEAD
+=======
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onMouseClicked="#showAuctions" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: white;" text="Auctions">
+>>>>>>> 5925dd5 (User)
                            <font>
                               <Font name="Gill Sans MT" size="14.0" />
                            </font>

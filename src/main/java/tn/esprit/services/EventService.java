@@ -17,7 +17,11 @@ public class EventService implements IService<Event> {
 
     @Override
     public void add(Event event) throws SQLException {
+<<<<<<< HEAD
         String query = "INSERT INTO `event`(`event_title`, `category`, `event_date`, `duration`, `aid`) VALUES ('" + event.getEvent_title() + "','" + event.getCategory() + "','" + event.getEvent_date() + "','" + event.getDuration() + "','" + event.getAid() + "')";
+=======
+        String query = "INSERT INTO `event`(`event_title`, `category`, `event_date`, `duration`, `uid`) VALUES ('" + event.getEvent_title() + "','" + event.getCategory() + "','" + event.getEvent_date() + "','" + event.getDuration() + "','" + event.getAid() + "')";
+>>>>>>> 5925dd5 (User)
         stm = con.createStatement();
         stm.executeUpdate(query);
         System.out.println("Event added!");
@@ -26,7 +30,11 @@ public class EventService implements IService<Event> {
 
     @Override
     public void addd(Event event) throws SQLException {
+<<<<<<< HEAD
         String query = "INSERT INTO `event`( `event_title`, `category`, `event_date`, `duration`, `aid`) VALUES (?,?,?,?,?)";
+=======
+        String query = "INSERT INTO `event`( `event_title`, `category`, `event_date`, `duration`, `uid`) VALUES (?,?,?,?,?)";
+>>>>>>> 5925dd5 (User)
         PreparedStatement ps = con.prepareStatement(query);
 
         ps.setString(1, event.getEvent_title());
@@ -85,7 +93,11 @@ public class EventService implements IService<Event> {
     }
 
     public List<Event> diplayListByUser(int uid) throws SQLException {
+<<<<<<< HEAD
         String query = "SELECT * FROM `event` where aid = ?";
+=======
+        String query = "SELECT * FROM `event` where uid = ?";
+>>>>>>> 5925dd5 (User)
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, uid);
         ResultSet res = ps.executeQuery();

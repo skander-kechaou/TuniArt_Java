@@ -877,10 +877,13 @@ public class Dashboard implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     public void displayOrders() {
 
     }
 
+=======
+>>>>>>> 5925dd5 (User)
     @FXML
     void showArts(MouseEvent event) {
         // Clear existing user boxes before adding new ones
@@ -919,6 +922,7 @@ public class Dashboard implements Initializable {
         displayEvents();
     }
 
+<<<<<<< HEAD
     @FXML
     void showOrders(MouseEvent event) {
         try {
@@ -976,6 +980,8 @@ public class Dashboard implements Initializable {
         System.out.println("moved");
     }
 
+=======
+>>>>>>> 5925dd5 (User)
 
 
 }

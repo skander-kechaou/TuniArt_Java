@@ -1,4 +1,5 @@
 package tn.esprit.entities;
+<<<<<<< HEAD
 import tn.esprit.utils.MyDatabase;
 
 import java.sql.Connection;
@@ -7,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+=======
+import java.sql.Date;
+>>>>>>> 5925dd5 (User)
 public class Art_Piece {
     int Art_ref;
     String Art_title;
@@ -19,6 +23,7 @@ public class Art_Piece {
     String image_path;
     String music_path;
     int art_views;
+<<<<<<< HEAD
     Boolean isAvailable;
 
     public Art_Piece(int art_ref, String art_title, float art_price, int aid, String type, Date creation, String description, String style, String image_path, String music_path, int art_views, Boolean isAvailable) {
@@ -62,6 +67,8 @@ public class Art_Piece {
         }
     }
 
+=======
+>>>>>>> 5925dd5 (User)
 
     public Art_Piece(String art_title, float art_price, int aid, String type, Date creation, String description, String style, String image_path, String music_path, int art_views) {
         Art_title = art_title;
@@ -102,6 +109,7 @@ public class Art_Piece {
         this.music_path = music_path;
     }
 
+<<<<<<< HEAD
     public Art_Piece() {
 
     }
@@ -109,6 +117,8 @@ public class Art_Piece {
     public Art_Piece(int artRef, String artTitle, float artPrice, String type, LocalDate creation, String description, String style, int artistId, boolean isAvailable) {
     }
 
+=======
+>>>>>>> 5925dd5 (User)
     public String getMusic_path() {
         return music_path;
     }

@@ -56,7 +56,11 @@
             <Button fx:id="go_to_auctions" mnemonicParsing="false" onAction="#go_to_auctions" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Auctions" textFill="WHITE" />
          </children>
       </HBox>
+<<<<<<< HEAD
       <Text fx:id="pageTitle" layoutX="133.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuni'Art">
+=======
+      <Text layoutX="133.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuni'Art">
+>>>>>>> 5925dd5 (User)
          <font>
             <Font name="Kaushan Script" size="64.0" />
          </font>
@@ -73,7 +77,11 @@
             <Image url="@../../images/search-interface-symbol.png" />
          </image>
       </ImageView>
+<<<<<<< HEAD
       <ImageView fx:id="sortBtn" fitHeight="27.0" fitWidth="27.0" layoutX="380.0" layoutY="130.0" onMouseClicked="#sortAuctions" pickOnBounds="true" preserveRatio="true">
+=======
+      <ImageView fx:id="sortBtn" fitHeight="27.0" fitWidth="27.0" layoutX="380.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> 5925dd5 (User)
          <image>
             <Image url="@../../images/sorting.png" />
          </image>

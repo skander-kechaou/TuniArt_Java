@@ -116,11 +116,14 @@
             <artifactId>json</artifactId>
             <version>20210307</version> <!-- Or the latest version -->
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+=======
+>>>>>>> 5925dd5 (User)
     </dependencies>
 
     <build>
