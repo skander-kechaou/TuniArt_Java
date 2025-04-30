@@ -135,7 +135,7 @@ public class LogIn implements Initializable {
                 root = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
             }
             else {
-                root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/gallery.fxml"));
             }
             javafx.scene.image.Image icon = new Image("file:/C:/Users/DELL/Documents/3A/Semester 2/PIDEV/Tuni Art/src/images/logo.png");
 

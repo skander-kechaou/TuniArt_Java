@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AddAuction">
+   <children>
+      <Region layoutX="132.0" layoutY="36.0" prefHeight="510.0" prefWidth="595.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
+      <Text fill="WHITE" layoutX="297.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Auction" wrappingWidth="344.60498046875">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="10.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" x="179.0" y="34.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="187.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="186.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="186.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Threshold">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="name_id" layoutX="185.0" layoutY="159.0" prefHeight="34.0" prefWidth="179.0" promptText="auction item" />
+      <DatePicker fx:id="startDate_id" layoutX="185.0" layoutY="241.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Start Date" />
+      <DatePicker fx:id="endDate_id" layoutX="185.0" layoutY="329.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter End Date" style="-fx-background-color: #FDF8DB;" />
+      <TextField fx:id="threshold_id" layoutX="184.0" layoutY="415.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Threshold" />
+      <Button fx:id="add_auction" layoutX="606.0" layoutY="478.0" mnemonicParsing="false" onAction="#addAuction" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Add" textFill="WHITE" />
+      <Text fx:id="threshold_alert" layoutX="334.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                     " />
+      <Text fx:id="name_alert1" layoutX="346.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                     " />
+      <Text fx:id="threshold_alert1" layoutX="330.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                     " />
+      <Text fx:id="start_alert" layoutX="334.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                     " />
+      <Text fx:id="end_alert" layoutX="334.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                     " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="183.0" layoutX="446.0" layoutY="192.0" stroke="BLACK" strokeType="INSIDE" width="179.0" />
+      <ImageView fx:id="logoId" fitHeight="183.0" fitWidth="179.0" layoutX="446.0" layoutY="192.0">
+         <image>
+            <Image url="@../../images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backid" fitHeight="63.0" fitWidth="71.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#move_back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/back-button.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</AnchorPane>

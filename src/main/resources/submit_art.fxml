@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.SubmitArt">
+   <children>
+      <ImageView fx:id="logoId" fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../images/logo.png" />
+      </ImageView>
+      <Region layoutX="200.0" layoutY="45.0" prefHeight="510.0" prefWidth="595.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
+      <Text fill="WHITE" layoutX="356.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publish Your Art !">
+         <font>
+            <Font name="Gill Sans MT" size="43.0" />
+         </font>
+      </Text>
+      <TextField fx:id="title_field_id" layoutX="310.0" layoutY="178.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Title" style="-fx-background-color: #FDF8DB;" />
+      <Text fill="WHITE" layoutX="324.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="589.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="price_field_id" layoutX="568.0" layoutY="178.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Price Here" style="-fx-background-color: #FDF8DB;" />
+      <Text fill="WHITE" layoutX="321.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="586.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Style">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="description_field_id" layoutX="309.0" layoutY="344.0" prefHeight="63.0" prefWidth="440.0" promptText="Description" style="-fx-background-color: #FDF8DB;" />
+      <Text fill="WHITE" layoutX="314.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="upload_image_button_id" layoutX="310.0" layoutY="441.0" mnemonicParsing="false" onAction="#addImage" onMouseEntered="#HoverIn1" onMouseExited="#HoverOut1" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Upload Image" textFill="WHITE" />
+      <Button fx:id="publish_button_id" layoutX="694.0" layoutY="463.0" mnemonicParsing="false" onAction="#addArt" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Publish" textFill="WHITE" />
+      <ChoiceBox fx:id="type_field_id" layoutX="310.0" layoutY="257.0" prefHeight="34.0" prefWidth="179.0" style="-fx-background-color: #FDF8DB;" />
+      <ChoiceBox fx:id="style_field_id" layoutX="568.0" layoutY="257.0" prefHeight="34.0" prefWidth="179.0" style="-fx-background-color: #FDF8DB;" />
+      <Text fx:id="title_alert" fill="#fa0404" layoutX="324.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+      <Text fx:id="price_alert" fill="#f40303" layoutX="576.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+      <ImageView fx:id="back_button" fitHeight="50.0" fitWidth="37.0" layoutX="47.0" layoutY="48.0" onMouseClicked="#go_back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/back-button.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="upload_music_button_id" layoutX="414.0" layoutY="441.0" mnemonicParsing="false" onAction="#addmusic" onMouseEntered="#HoverIn2" onMouseExited="#HoverOut2" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Upload Music " textFill="WHITE" />
+      <Button fx:id="Take_picture" layoutX="420.0" layoutY="475.0" mnemonicParsing="false" onAction="#take_pic" onMouseEntered="#HoverIn3" onMouseExited="#HoverOut3" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Take Picture" textFill="WHITE" />
+      <Button fx:id="draw_pic" layoutX="310.0" layoutY="475.0" mnemonicParsing="false" onAction="#draw_pic" onMouseEntered="#HoverIn4" onMouseExited="#HoverOut4" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Draw a picture" textFill="WHITE" />
+   </children>
+</AnchorPane>

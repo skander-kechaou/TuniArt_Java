@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Gallery_user">
+    <children>
+        <Region prefHeight="100.0" prefWidth="862.0" style="-fx-background-color: FDF8DB; -fx-background-radius: 30;" />
+        <Region prefHeight="56.0" prefWidth="862.0" style="-fx-background-color: FDF8DB;" />
+        <ImageView fx:id="logoId" fitHeight="89.0" fitWidth="89.0" layoutX="30.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/logo.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="printId" fitHeight="87.0" fitWidth="230.0" layoutX="130.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/tun.png" />
+            </image></ImageView>
+        <Region layoutX="18.0" layoutY="117.0" prefHeight="469.0" prefWidth="825.0" style="-fx-background-color: #FFFFFF;" />
+        <ImageView fx:id="profilePictureId" fitHeight="37.0" fitWidth="43.0" layoutX="778.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+
+            </image>
+        </ImageView>
+        <Text fx:id="uidTextId" layoutX="69.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arts Peices for sale">
+            <font>
+                <Font name="Gill Sans MT" size="14.0" />
+            </font></Text>
+        <AnchorPane layoutX="30.0" layoutY="165.0" prefHeight="414.0" prefWidth="805.0">
+            <children>
+                <ScrollPane hbarPolicy="NEVER" prefHeight="414.0" prefWidth="806.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; -fx-border-color: transparent; -fx-background-radius: 55;" vbarPolicy="NEVER">
+                    <content>
+                        <FlowPane fx:id="artsContainer" prefHeight="412.0" prefWidth="805.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
+                    </content>
+
+                </ScrollPane>
+
+            </children>
+        </AnchorPane>
+        <Button fx:id="upload_art" layoutX="718.0" layoutY="128.0" mnemonicParsing="false" onAction="#upload_art" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Highest rated" textFill="WHITE" />
+        <Region layoutX="404.0" layoutY="28.0" prefHeight="56.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 55;" />
+        <Button fx:id="go_to_galleries" layoutX="431.0" layoutY="43.0" mnemonicParsing="false" onAction="#go_to_galleries" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Galleries" textFill="WHITE" />
+        <Button fx:id="go_to_arts" layoutX="521.0" layoutY="43.0" mnemonicParsing="false" onAction="#go_to_arts" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Art Peices" textFill="WHITE" />
+    </children>
+</AnchorPane>

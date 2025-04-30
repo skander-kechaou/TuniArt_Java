@@ -3,9 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -28,39 +25,12 @@
             <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
-      <MenuBar layoutX="397.0" layoutY="36.0" prefHeight="40.0" prefWidth="428.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 55;">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-         <padding>
-            <Insets left="20.0" top="7.0" />
-         </padding>
-      </MenuBar>
       <ImageView fitHeight="87.0" fitWidth="230.0" layoutX="130.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../Downloads/Downloads/Tuni%20Art/src/images/tun.png" />
          </image>
       </ImageView>
       <Region layoutX="18.0" layoutY="117.0" prefHeight="469.0" prefWidth="825.0" style="-fx-background-color: #FFFFFF;" />
-      <ImageView fx:id="accountId" fitHeight="37.0" fitWidth="43.0" layoutX="778.0" layoutY="38.0" onMouseClicked="#userMenu" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/Profile-PNG-File.png" />
-         </image>
-      </ImageView>
       <AnchorPane layoutX="18.0" layoutY="116.0" prefHeight="470.0" prefWidth="826.0">
          <children>
             <BorderPane prefHeight="470.0" prefWidth="826.0" style="-fx-background-color: white;">
@@ -163,14 +133,14 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Art Pieces" textFill="WHITE" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Auctions" textFill="WHITE" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Events" textFill="WHITE" />
+                              <Button mnemonicParsing="false" onAction="#DisplayArtPieces" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Art Pieces" textFill="WHITE" />
+                              <Button mnemonicParsing="false" onAction="#displayAuctionsAll" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Auctions" textFill="WHITE" />
+                              <Button mnemonicParsing="false" onAction="#displayEventsAll" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #454947;" text="Events" textFill="WHITE" />
                            </children>
                         </HBox>
                         <ScrollPane prefHeight="370.0" prefWidth="556.0" style="-fx-background-color: white; -fx-border-color: white;">
                            <content>
-                              <FlowPane prefHeight="370.0" prefWidth="553.0" style="-fx-background-color: white; -fx-border-color: white;" />
+                              <FlowPane fx:id="container" prefHeight="370.0" prefWidth="553.0" style="-fx-background-color: white; -fx-border-color: white;" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -184,5 +154,20 @@
             <Font name="Kaushan Script" size="64.0" />
          </font>
       </Text>
+      <Region layoutX="385.0" layoutY="28.0" prefHeight="56.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 55;" />
+      <HBox alignment="CENTER" layoutX="384.0" layoutY="28.0" prefHeight="56.0" prefWidth="402.0" spacing="10.0">
+         <children>
+            <Button fx:id="go_to_galleries" mnemonicParsing="false" onAction="#go_to_galleries" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Galleries" textFill="WHITE" />
+            <Button fx:id="go_to_arts" mnemonicParsing="false" onAction="#go_to_arts" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Art Pieces" textFill="WHITE" />
+            <Button fx:id="go_to_users" mnemonicParsing="false" onAction="#go_to_users" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Users" textFill="WHITE" />
+            <Button fx:id="go_to_arts2" mnemonicParsing="false" onAction="#go_to_arts" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Events" textFill="WHITE" />
+            <Button fx:id="go_to_arts3" mnemonicParsing="false" onAction="#go_to_arts" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Auctions" textFill="WHITE" />
+         </children>
+      </HBox>
+      <ImageView fx:id="profilePictureId" fitHeight="37.0" fitWidth="43.0" layoutX="801.0" layoutY="38.0" onMouseClicked="#userMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/Profile-PNG-File.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

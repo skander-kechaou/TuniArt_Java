@@ -2,6 +2,7 @@ package tn.esprit.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -170,7 +172,7 @@ public class Home implements Initializable {
             VBox userBox = new VBox();
             userBox.getStyleClass().add("userBox"); // Add style class to VBox
             //userBox.setStyle("-fx-padding: 30px; -fx-spacing: 20px; -fx-border-radius: 10px; -fx-background-color: #f7f8fa; -fx-border-color: #5dade2; ");
-            userBox.setStyle("-fx-padding: 20px; -fx-spacing: 10px; -fx-background-color: #f7f8fa; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);");
+            userBox.setStyle("-fx-padding: 20px; -fx-spacing: 10px; -fx-background-color: #3B2A19; -fx-background-radius: 55; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);");
 
             // Set a fixed width for the VBox
             userBox.setPrefWidth(185); // Adjust width here (e.g., 200 pixels)
@@ -182,6 +184,8 @@ public class Home implements Initializable {
             Label nameLabel = new Label(user.getFname().toUpperCase() + " " + user.getLname().toUpperCase());
             Label roleLabel = new Label(user.getRole());
             nameLabel.setFont(Font.font("Gill Sans MT", FontWeight.NORMAL, FontPosture.REGULAR, 12));
+            nameLabel.setTextFill(Color.WHITE);
+            roleLabel.setTextFill(Color.WHITE);
             roleLabel.setFont(Font.font("Gill Sans MT", FontWeight.NORMAL, FontPosture.REGULAR, 12));
             userBox.setAlignment(Pos.CENTER);
             userBox.getChildren().add(nameLabel);
@@ -296,7 +300,7 @@ public class Home implements Initializable {
         Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         // Load the new FXML file
-        Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gallery.fxml"));
         javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
 
         // Create a new stage for the new window
@@ -374,9 +378,157 @@ public class Home implements Initializable {
             }
         }
 
+
+
     @FXML
     void sort(MouseEvent event) {
         sortUsers();
+    }
+
+    @FXML
+    public void go_to_galleries(javafx.event.ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/View_Galleries.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+    }
+
+    @FXML
+    void go_to_users(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+    }
+
+    @FXML
+    public void go_to_arts(javafx.event.ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/gallery.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+
+    }
+
+    @FXML
+    public void go_to_events(javafx.event.ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/showEvents.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
+    }
+
+    @FXML
+    void go_to_auctions(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/ViewAuctions.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image icon = new Image("file:/src/images/logo.png");
+
+        // Create a new stage for the new window
+        Stage newStage = new Stage();
+        newStage.getIcons().add(icon);
+
+        // Set the scene with the new root
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.setTitle("Tuni'Art");
+
+        // Close the old stage
+        Stage oldStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        oldStage.close();
+
+        // Show the new stage
+        newStage.show();
+
+        System.out.println("moved");
     }
 
 }

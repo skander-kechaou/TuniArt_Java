@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -24,51 +22,21 @@
             <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
-      <MenuBar layoutX="397.0" layoutY="36.0" prefHeight="40.0" prefWidth="428.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 55;">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-         <padding>
-            <Insets left="20.0" top="7.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
       <ImageView fitHeight="87.0" fitWidth="230.0" layoutX="130.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../Downloads/Downloads/Tuni%20Art/src/images/tun.png" />
          </image>
       </ImageView>
       <Region layoutX="18.0" layoutY="117.0" prefHeight="469.0" prefWidth="825.0" style="-fx-background-color: #FFFFFF;" />
-      <ImageView fx:id="profilePictureId" fitHeight="37.0" fitWidth="43.0" layoutX="778.0" layoutY="38.0" onMouseClicked="#userMenu" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/Profile-PNG-File.png" />
-         </image>
-      </ImageView>
       <Text fx:id="uidTextId" layoutX="69.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font name="Gill Sans MT" size="14.0" />
          </font></Text>
       <AnchorPane layoutX="30.0" layoutY="165.0" prefHeight="414.0" prefWidth="805.0">
          <children>
-            <ScrollPane prefHeight="414.0" prefWidth="806.0" style="-fx-background-color: white; -fx-border-color: white;">
+            <ScrollPane prefHeight="414.0" prefWidth="806.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; -fx-background-radius: 55;">
                <content>
-                  <FlowPane fx:id="usersContainer" prefHeight="412.0" prefWidth="805.0" style="-fx-background-color: white; -fx-border-color: white;" />
+                  <FlowPane fx:id="usersContainer" prefHeight="412.0" prefWidth="805.0" style="-fx-background-color: #454947; -fx-background-radius: 55; -fx-border-color: white;" />
                </content>
             </ScrollPane>
          </children>
@@ -93,6 +61,21 @@
       <ImageView fx:id="sortBtn" fitHeight="27.0" fitWidth="27.0" layoutX="380.0" layoutY="130.0" onMouseClicked="#sort" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/sorting.png" />
+         </image>
+      </ImageView>
+      <Region layoutX="385.0" layoutY="28.0" prefHeight="56.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 55;" />
+      <HBox alignment="CENTER" layoutX="384.0" layoutY="28.0" prefHeight="56.0" prefWidth="402.0" spacing="10.0">
+         <children>
+            <Button fx:id="go_to_galleries" mnemonicParsing="false" onAction="#go_to_galleries" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Galleries" textFill="WHITE" />
+            <Button fx:id="go_to_arts" mnemonicParsing="false" onAction="#go_to_arts" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Art Pieces" textFill="WHITE" />
+            <Button fx:id="go_to_users" mnemonicParsing="false" onAction="#go_to_users" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Users" textFill="WHITE" />
+            <Button fx:id="go_to_events" mnemonicParsing="false" onAction="#go_to_events" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Events" textFill="WHITE" />
+            <Button fx:id="go_to_auctions" mnemonicParsing="false" onAction="#go_to_auctions" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Auctions" textFill="WHITE" />
+         </children>
+      </HBox>
+      <ImageView fx:id="profilePictureId" fitHeight="37.0" fitWidth="43.0" layoutX="801.0" layoutY="38.0" onMouseClicked="#userMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/Profile-PNG-File.png" />
          </image>
       </ImageView>
    </children>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" style="-fx-background-color: #2AA7A0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AddGallery">
+<children>
+    <ImageView fx:id="image_id" fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../images/logo.png" />
+    </ImageView>
+    <Region layoutX="200.0" layoutY="45.0" prefHeight="510.0" prefWidth="595.0" style="-fx-background-color: #454947; -fx-background-radius: 55;" />
+    <Text fill="WHITE" layoutX="391.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add A Gallery">
+        <font>
+            <Font name="Gill Sans MT" size="43.0" />
+        </font>
+    </Text>
+    <TextField fx:id="Name_id" layoutX="310.0" layoutY="178.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Title" style="-fx-background-color: #FDF8DB;" />
+    <Text fill="WHITE" layoutX="324.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <Text fill="WHITE" layoutX="589.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <TextField fx:id="phone_id" layoutX="568.0" layoutY="178.0" prefHeight="34.0" prefWidth="179.0" promptText="Enter Price Here" style="-fx-background-color: #FDF8DB;" />
+    <Text fill="WHITE" layoutX="321.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <Text fill="WHITE" layoutX="586.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operating Hours">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <TextField fx:id="description_id" layoutX="309.0" layoutY="344.0" prefHeight="63.0" prefWidth="440.0" promptText="Description" style="-fx-background-color: #FDF8DB;" />
+    <Text fill="WHITE" layoutX="314.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Text>
+    <Button fx:id="upload_image_button_id" layoutX="303.0" layoutY="428.0" mnemonicParsing="false" onAction="#addImage" onMouseEntered="#HoverIn1" onMouseExited="#HoverOut1" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Upload Image" textFill="WHITE" />
+    <Button fx:id="add_gallery" layoutX="674.0" layoutY="487.0" mnemonicParsing="false" onAction="#addGallery" onMouseEntered="#HoverIn" onMouseExited="#HoverOut" style="-fx-background-color: E18B10; -fx-background-radius: 55" text="Add" textFill="WHITE" />
+    <ChoiceBox fx:id="location_id" layoutX="310.0" layoutY="257.0" prefHeight="34.0" prefWidth="179.0" style="-fx-background-color: #FDF8DB;" />
+    <Text fx:id="title_alert" fill="#fa0404" layoutX="324.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+    <Text fx:id="price_alert" fill="#f40303" layoutX="576.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="               " />
+      <ChoiceBox fx:id="starting_hour" layoutX="573.0" layoutY="257.0" prefHeight="34.0" prefWidth="54.0" style="-fx-background-color: #FDF8DB;" />
+      <ChoiceBox fx:id="ending_hour" layoutX="674.0" layoutY="257.0" prefHeight="34.0" prefWidth="54.0" style="-fx-background-color: #FDF8DB;" />
+      <ImageView fx:id="back_button" fitHeight="50.0" fitWidth="37.0" layoutX="37.0" layoutY="38.0" onMouseClicked="#go_back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/back-button.png" />
+         </image>
+      </ImageView>
+</children>
+</AnchorPane>
